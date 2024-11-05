@@ -20,22 +20,29 @@
                         <div class="card-body">
                             <h5 class="card-title">Name project: {{ $project->name }}</h5>
                             <h5>Started on: {{ $project->date }}</h5>
-                            <p class="card-text">
-                            Languages used: {{ $project->languages}}
-                            </p>
-                            <p class="card-text">
-                                {{ $project->description}}
-                            </p>
+                            <div class="mb-2">
+                                <h5 class="mb-1">Languages used: </h5>
+                                <p class="card-text">
+                                {{ $project->languages}}
+                                </p>
+                            </div>
+                            <div class="mb-2">
+                                <h5 class="mb-1">Description:</h5>
+                                <p class="card-text">
+                                    {{ $project->description}}
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    {{-- <div class="d-flex justify-content-center mt-1">
-                        <a href="{{ route('admin.project.show', ['id' => $project->id]) }}" class="btn btn-primary w-100">Show more...</a>
-                    </div>
                     <div class="d-flex justify-content-center mt-1">
-                        <a href="{{ route('admin.project.edit', ['id' => $project->id]) }}" class="btn btn-warning w-100">Edit</a>
+                        <a href="{{ route('admin.projects.show', ['id' => $project->id]) }}" class="btn btn-primary w-100">Show more...</a>
                     </div>
-                    <form action="{{ route("admin.project.delete", ["id" => $project->id])}}" method="POST" class="w-100 mt-1 mb-5" >
+                    {{--
+                    <div class="d-flex justify-content-center mt-1">
+                        <a href="{{ route('admin.projects.edit', ['id' => $project->id]) }}" class="btn btn-warning w-100">Edit</a>
+                    </div>
+                    <form action="{{ route("admin.projects.delete", ["id" => $project->id])}}" method="POST" class="w-100 mt-1 mb-5" >
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger w-100">Delete</button>
