@@ -9,9 +9,10 @@
         <div class="col-12">
             <h1 class="text-center">My projects</h1>
         </div>
-        {{-- <div class="col-12 text-center my-3">
-            <a href="" class="btn btn-primary">Create a new project</a>
-        </div> --}}
+        <div class="col-12 text-center my-3">
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Create a new project</a>
+            {{-- {{ dd(route('admin.projects.create')) }} --}}
+        </div>
         <div class="col-10">
             <ul class="row">
                 @forelse ($projects as $project)
@@ -36,7 +37,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mt-1">
-                        <a href="{{ route('admin.projects.show', ['id' => $project->id]) }}" class="btn btn-primary w-100">Show more...</a>
+                        <a href="{{ route('admin.projects.show',$project )}}" class="btn btn-primary w-100">Show more...</a>
                     </div>
                     {{--
                     <div class="d-flex justify-content-center mt-1">
