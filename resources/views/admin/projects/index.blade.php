@@ -53,6 +53,9 @@
                 <h1>There are not projects in your collection database! </h1>
                 @endforelse
             </ul>
+            <div class="my-4">
+                {{ $projects->links() }}
+            </div>
         </div>
     </div>
 </div>
