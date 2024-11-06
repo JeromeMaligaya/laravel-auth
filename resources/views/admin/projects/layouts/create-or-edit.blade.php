@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="name" class="form-label">Name project:</label>
-                      <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                      <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $project->name) }}">
                     </div>
                     @error('name')
                        <div class="alert alert-warning">
@@ -39,7 +39,7 @@
                     @enderror
                     <div class="mb-3">
                       <label for="date" class="form-label">Date started:</label>
-                      <input type="text" class="form-control" id="date" name="date" value="{{ old('date') }}">
+                      <input type="text" class="form-control" id="date" name="date" value="{{ old('date', $project->date) }}">
                     </div>
                     @error('date')
                     <div class="alert alert-warning">
@@ -48,7 +48,7 @@
                     @enderror
                     <div class="mb-3">
                         <label for="description" class="form-label">Description:</label>
-                        <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
+                        <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ old('description', $project->description) }}</textarea>
                     </div>
                     @error('description')
                     <div class="alert alert-warning">
@@ -57,7 +57,7 @@
                     @enderror
                     <div class="mb-3">
                       <label for="languages" class="form-label">Languages used:</label>
-                      <input type="text" class="form-control" id="languages" name="languages" value="{{ old('languages') }}">
+                      <input type="text" class="form-control" id="languages" name="languages" value="{{ old('languages', $project->languages) }}">
                     </div>
                     @error('languages')
                     <div class="alert alert-warning">
