@@ -52,15 +52,19 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('admin.projects.edit', compact("project"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProjectRequest $request, string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $data = $request->validated();
+        $project->update($data);
+        return redirect()->route("admin.projects.show", ["id" => $project->id]);
     }
 
     /**
