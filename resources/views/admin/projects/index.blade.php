@@ -37,17 +37,16 @@
                     </div>
 
                     <div class="d-flex justify-content-center mt-1">
-                        <a href="{{ route('admin.projects.show',$project )}}" class="btn btn-primary w-100">Show more...</a>
+                        <a href="{{ route('admin.projects.show', $project )}}" class="btn btn-primary w-100">Show more...</a>
                     </div>
                     <div class="d-flex justify-content-center mt-1">
-                        <a href="{{ route('admin.projects.edit', ['id' => $project->id]) }}" class="btn btn-warning w-100">Edit</a>
+                        <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning w-100">Edit</a>
                     </div>
-                    {{--
-                    <form action="{{ route("admin.projects.delete", ["id" => $project->id])}}" method="POST" class="w-100 mt-1 mb-5" >
+                    <form action="{{ route("admin.projects.delete", $project)}}" method="POST" class="w-100 mt-1 mb-5" >
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger w-100">Delete</button>
-                    </form> --}}
+                    </form>
                 </li>
                 @empty
                 <h1>There are not projects in your collection database! </h1>
