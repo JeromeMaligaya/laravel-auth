@@ -36,36 +36,33 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $project = Project::create($data);
-        return redirect()->route("admin.projects.show", ["id" => $project->id]);
+        return redirect()->route("admin.projects.show", $project);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
         return view("admin.projects.show", compact("project"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        $project = Project::findOrFail($id);
         return view('admin.projects.edit', compact("project"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreProjectRequest $request, string $id)
+    public function update(StoreProjectRequest $request, Project $project)
     {
-        $project = Project::findOrFail($id);
         $data = $request->validated();
         $project->update($data);
-        return redirect()->route("admin.projects.show", ["id" => $project->id]);
+        return redirect()->route("admin.projects.show", $project);
     }
 
     /**
@@ -73,7 +70,31 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        $project->delete();
+        return redirect()->route("admin.projects.index");
+    }
+
+    public function deletedIndex()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view("admin.projects.deleted-index", compact("projects"));
+    }
+
+    public function restore(string $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+
+        $project->restore();
+        return redirect()->route("admin.projects.index");
+    }
+
+    public function permanentDelete(string $id)
+    {
+        $project = Project::withTrashed()->findOrFail($id);
+        $project->forceDelete();
+        return redirect()->route("admin.projects.deleted.index");
     }
 
     public function __construct()
