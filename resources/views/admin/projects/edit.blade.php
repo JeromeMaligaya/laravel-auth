@@ -1,7 +1,7 @@
 @extends("admin.projects.layouts.create-or-edit")
 
 @section("form-action")
-    {{ route("admin.projects.update", ["id" => $project->id]) }}
+    {{ route("admin.projects.update", $project) }}
 @endsection
 
 @section("form-method")
