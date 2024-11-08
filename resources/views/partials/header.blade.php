@@ -18,6 +18,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.projects.create') }}">{{ __('Create new Project') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.projects.deleted.index') }}">{{ __('Project Bin') }}</a>
+                        </li>
                     @endauth
                 </ul>
 
